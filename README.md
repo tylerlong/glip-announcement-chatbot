@@ -3,8 +3,8 @@
 
 ## Reference
 
-[Tutorial for Ping chatbot - express version](https://github.com/tylerlong/glip-ping-chatbot/tree/express)
-[Tutorial for Ping chatbot - lambda version](https://github.com/tylerlong/glip-ping-chatbot/tree/lambda)
+- [Tutorial for Ping chatbot - express version](https://github.com/tylerlong/glip-ping-chatbot/tree/express)
+- [Tutorial for Ping chatbot - lambda version](https://github.com/tylerlong/glip-ping-chatbot/tree/lambda)
 
 
 ## Setup for dev
