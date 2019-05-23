@@ -1,0 +1,2 @@
+--ignore-dir=.serverless
+--ignore-file=match:/^yarn\.lock$/
