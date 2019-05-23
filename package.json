@@ -1,4 +1,9 @@
 {
+  "license": "MIT",
+  "scripts": {
+    "dev": "node -r dotenv/config express.js",
+    "deploy": "sls deploy"
+  },
   "dependencies": {
     "pg": "^7.11.0",
     "ringcentral-chatbot": "^1.0.0",

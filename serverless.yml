@@ -16,6 +16,7 @@ package:
   exclude:
     - ./**
     - '!lambda.js'
+    - '!app.js'
     - '!node_modules/**'
   excludeDevDependencies: true
 functions:

@@ -21,10 +21,31 @@ Permissions required: `ReadAccounts`, `EditPermissions`, `Glip`, `WebHook Subscr
 ```
 cp .env.sample .env
 edit .env
-node -r dotenv/config express.js
+yarn dev
 curl -X PUT -u admin:password https://xxxxx.ngrok.io/admin/setup-database
 ```
 
 Add the bot to Glip in https://developers.ringcentral.com/.
 
 Talk to the bot to test it.
+
+
+## Deploy to AWS Lambda
+
+```
+cp .env.yml.sample .env.yml
+edit .env.yml
+```
+
+For `RINGCENTRAL_CHATBOT_SERVER`, use a placeholder value: https://xxxxx.execute-api.us-east-1.amazonaws.com/prod
+
+```
+yarn deploy
+```
+
+Update `.env.yml` and change `RINGCENTRAL_CHATBOT_SERVER` to the real value.
+
+```
+yarn deploy
+curl -X PUT -u admin:password https://xxxxx.execute-api.us-east-1.amazonaws.com/prod/admin/setup-database
+```
