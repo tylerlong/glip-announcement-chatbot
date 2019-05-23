@@ -1,4 +1,4 @@
-# Glip email announcement chatbot
+# Glip Announcement Chatbot
 
 
 ## Reference

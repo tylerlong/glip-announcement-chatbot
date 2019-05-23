@@ -1,5 +1,5 @@
 service:
-  name: glip-email-announcement-chatbot
+  name: glip-announcement-chatbot
 provider:
   stage: ${opt:stage, 'prod'}
   name: aws
