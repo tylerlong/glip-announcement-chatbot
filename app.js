@@ -10,6 +10,11 @@ const handle = async event => {
       await bot.sendMessage(group.id, { text: 'Mention me and start your message with "ANNOUNCEMENT:" and I will mail the message to all the team members.' })
     } else if (text.startsWith('ANNOUNCEMENT:')) {
       const persons = await bot.rc.batchGet('/restapi/v1.0/glip/persons', group.members, 30)
+      await bot.sendMessage(group.id, { text: 'Sending announcement above via email to ' + persons
+        .map(person => person.email)
+        .filter(email => !email.endsWith('.bot.glip.net'))
+        .join(', ')
+      })
       sendmail({
         from: 'announment-bot@ringcentral.com',
         to: persons
@@ -21,11 +26,6 @@ const handle = async event => {
       }, function (err, reply) {
         console.log(err && err.stack)
         console.dir(reply)
-      })
-      await bot.sendMessage(group.id, { text: 'Sending announcement above via email to ' + persons
-        .map(person => person.email)
-        .filter(email => !email.endsWith('.bot.glip.net'))
-        .join(', ')
       })
     } else {
       // message is not for the bot, do nothing.
