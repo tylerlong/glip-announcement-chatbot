@@ -5,11 +5,12 @@
     "deploy": "sls deploy"
   },
   "dependencies": {
+    "gmail-send": "^1.2.14",
     "pg": "^7.11.0",
     "ringcentral-chatbot": "^1.0.0",
-    "sendmail": "^1.4.1",
     "serverless-http": "^2.0.2",
-    "sqlite3": "^4.0.8"
+    "sqlite3": "^4.0.8",
+    "timeout-as-promise": "^1.0.0"
   },
   "devDependencies": {
     "dotenv": "^8.0.0",
