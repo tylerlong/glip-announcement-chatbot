@@ -22,7 +22,7 @@ const handle = async event => {
         subject: 'ANNOUNCEMENT',
         text: text.substring(13).trim()
       })({})
-      await delay(3000)
+      await delay(3000) // want for email sending
     } else {
       // message is not for the bot, do nothing.
     }
