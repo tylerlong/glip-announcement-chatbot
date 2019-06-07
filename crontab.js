@@ -55,6 +55,12 @@ const sendEmail = async () => {
         text: text.substring(13).trim()
       })({}, (e, r) => console.log(e, r))
       console.log(emails)
+      const r = await bot.rc.post('/restapi/v1.0/glip/groups', {
+        type: 'PrivateChat',
+        members: [bot.id, service.data.message.creatorId]
+      })
+      const tempGroup = r.data
+      await bot.rc.post('/restapi/v1.0/glip/posts', { groupId: tempGroup.id, text: `Your announcement has been emailed!` })
     } finally {
       await Service.destroy({ where: { id: service.id } })
     }
