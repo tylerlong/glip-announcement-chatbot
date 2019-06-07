@@ -53,7 +53,7 @@ const sendEmail = async () => {
         pass: process.env.GMAIL_PASSWORD,
         to: emails,
         subject: 'ANNOUNCEMENT',
-        html: glipdown.Markdown(text.substring(13).trim())
+        html: glipdown.Markdown(text.substring(13).trim()).replace(/\n/g, '\n<br/>')
         // text: text.substring(13).trim()
       })({}, (e, r) => console.log(e, r))
       console.log(emails)
