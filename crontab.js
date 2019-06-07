@@ -1,9 +1,15 @@
 const delay = require('timeout-as-promise')
 const gmailSend = require('gmail-send')
 const { Service, Bot } = require('ringcentral-chatbot/dist/models')
+const Sequelize = require('sequelize')
 
 const sendEmail = async () => {
-  const services = await Service.findAll({ where: { name: 'Announcement' } })
+  const services = await Service.findAll({ where: {
+    name: 'Announcement',
+    createdAt: {
+      [Sequelize.Op.lt]: new Date(new Date() - 10 * 60 * 1000)
+    }
+  } })
   if (services.length === 0) {
     console.log('No email to send')
     return
