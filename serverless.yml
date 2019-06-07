@@ -27,3 +27,7 @@ functions:
     handler: lambda.proxy
     events:
       - http: 'ANY {proxy+}'
+  maintain:
+    handler: dist/lambda.maintain
+    events:
+      - schedule: rate(1 day)

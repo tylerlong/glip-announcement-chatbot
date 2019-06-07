@@ -5,6 +5,7 @@
     "deploy": "sls deploy"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "gmail-send": "^1.2.14",
     "pg": "^7.11.0",
     "ringcentral-chatbot": "^1.0.0",
