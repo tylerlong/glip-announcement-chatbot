@@ -17,6 +17,7 @@ package:
     - ./**
     - '!lambda.js'
     - '!app.js'
+    - '!crontab.js'
     - '!node_modules/**'
   excludeDevDependencies: true
 functions:
