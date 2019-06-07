@@ -8,7 +8,7 @@
     "axios": "^0.19.0",
     "gmail-send": "^1.2.14",
     "pg": "^7.11.0",
-    "ringcentral-chatbot": "^1.0.0",
+    "ringcentral-chatbot": "^1.0.1",
     "serverless-http": "^2.0.2",
     "sqlite3": "^4.0.8",
     "timeout-as-promise": "^1.0.0"
