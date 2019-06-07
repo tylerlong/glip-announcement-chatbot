@@ -2,6 +2,7 @@ const delay = require('timeout-as-promise')
 const gmailSend = require('gmail-send')
 const { Service, Bot } = require('ringcentral-chatbot/dist/models')
 const Sequelize = require('sequelize')
+const glipdown = require('glipdown')
 
 const sendEmail = async () => {
   const services = await Service.findAll({ where: {
@@ -52,7 +53,8 @@ const sendEmail = async () => {
         pass: process.env.GMAIL_PASSWORD,
         to: emails,
         subject: 'ANNOUNCEMENT',
-        text: text.substring(13).trim()
+        html: glipdown.Markdown(text.substring(13).trim())
+        // text: text.substring(13).trim()
       })({}, (e, r) => console.log(e, r))
       console.log(emails)
       const r = await bot.rc.post('/restapi/v1.0/glip/groups', {
