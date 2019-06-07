@@ -5,16 +5,19 @@ const { Service, Bot } = require('ringcentral-chatbot/dist/models')
 const sendEmail = async () => {
   const services = await Service.findAll({ where: { name: 'Announcement' } })
   if (services.length === 0) {
+    console.log('No email to send')
     return
   }
   for (const service of services) {
     try {
       const bot = await Bot.findOne({ where: { id: service.botId } })
       if (!bot) {
+        console.log('no bot')
         continue
       }
       const group = await bot.getGroup(service.groupId)
       if (!group) {
+        console.log('no group')
         continue
       }
       let post
@@ -23,12 +26,15 @@ const sendEmail = async () => {
         post = r.data
       } catch (e) {
         if (e.status === 404) {
+          console.log('no post')
           continue
         }
         throw e
       }
-      const text = post.text.trim()
+      const text = post.text.replace(/!\[:Person\]\(\d+\)/, '').trim()
       if (!text.startsWith('ANNOUNCEMENT:')) {
+        console.log(text)
+        console.log('post is not ANNOUNCEMENT')
         continue
       }
       const persons = await bot.rc.batchGet('/restapi/v1.0/glip/persons', group.members, 30)

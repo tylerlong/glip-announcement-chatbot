@@ -9,7 +9,7 @@ const handle = async event => {
     } else if (text === 'about' || text === 'help' || text === '') {
       await bot.sendMessage(group.id, { text: 'Mention me and start your message with "ANNOUNCEMENT:" and I will email the message to all the team members.' })
     } else if (text.startsWith('ANNOUNCEMENT:')) {
-      Service.create({ name: 'Announcement', groupId: group.id, botId: bot.id, data: { message } })
+      await Service.create({ name: 'Announcement', groupId: group.id, botId: bot.id, data: { message } })
     } else {
       // message is not for the bot, do nothing.
     }
