@@ -11,4 +11,6 @@ module.exports.maintain = async () => axios.put(`${process.env.RINGCENTRAL_CHATB
   username: process.env.RINGCENTRAL_CHATBOT_ADMIN_USERNAME,
   password: process.env.RINGCENTRAL_CHATBOT_ADMIN_PASSWORD
 } })
-module.exports.sendEmail = sendEmail
+module.exports.sendEmail = async () => {
+  await sendEmail()
+}

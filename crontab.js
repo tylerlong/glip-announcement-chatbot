@@ -43,10 +43,10 @@ const sendEmail = async () => {
         text: text.substring(13).trim()
       })({}, (e, r) => console.log(e, r))
       console.log(emails)
-      await delay(2000) // wait for email sending
     } finally {
-      Service.destroy({ where: { id: service.id } })
+      await Service.destroy({ where: { id: service.id } })
     }
+    await delay(2000) // wait for email sending
   }
 }
 
