@@ -10,6 +10,12 @@ const handle = async event => {
       await bot.sendMessage(group.id, { text: 'Mention me and start your message with "ANNOUNCEMENT:" and I will email the message to all the team members.' })
     } else if (text.startsWith('ANNOUNCEMENT:')) {
       await Service.create({ name: 'Announcement', groupId: group.id, botId: bot.id, data: { message } })
+      const r = await bot.rc.post('/restapi/v1.0/glip/groups', {
+        type: 'PrivateChat',
+        members: [bot.id, message.creatorId]
+      })
+      const tempGroup = r.data
+      await bot.rc.post('/restapi/v1.0/glip/posts', { groupId: tempGroup.id, text: `You've posted an announcement in Glip. You have 10 minutes to edit or delete it before it will be emailed to all members in that conversation.` })
     } else {
       // message is not for the bot, do nothing.
     }
