@@ -35,4 +35,4 @@ functions:
   sendEmail:
     handler: lambda.sendEmail
     events:
-      - schedule: rate(1 minute)
+      - schedule: rate(10 minutes)
