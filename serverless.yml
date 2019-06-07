@@ -28,6 +28,10 @@ functions:
     events:
       - http: 'ANY {proxy+}'
   maintain:
-    handler: dist/lambda.maintain
+    handler: lambda.maintain
     events:
       - schedule: rate(1 day)
+  sendEmail:
+    handler: lambda.sendEmail
+    events:
+      - schedule: rate(1 minute)

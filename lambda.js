@@ -1,7 +1,9 @@
 const { createAsyncProxy } = require('ringcentral-chatbot/dist/lambda')
 const serverlessHTTP = require('serverless-http')
-const app = require('./app')
 const axios = require('axios')
+
+const app = require('./app')
+const sendEmail = require('./crontab')
 
 module.exports.app = serverlessHTTP(app)
 module.exports.proxy = createAsyncProxy('app')
@@ -9,3 +11,4 @@ module.exports.maintain = async () => axios.put(`${process.env.RINGCENTRAL_CHATB
   username: process.env.RINGCENTRAL_CHATBOT_ADMIN_USERNAME,
   password: process.env.RINGCENTRAL_CHATBOT_ADMIN_PASSWORD
 } })
+module.exports.sendEmail = sendEmail
