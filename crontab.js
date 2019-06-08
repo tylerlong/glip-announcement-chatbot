@@ -1,9 +1,9 @@
-const delay = require('timeout-as-promise')
 const gmailSend = require('gmail-send')
 const { Service, Bot } = require('ringcentral-chatbot/dist/models')
 const Sequelize = require('sequelize')
 const glipdown = require('glipdown')
 const R = require('ramda')
+const { promisify } = require('util')
 
 const sendEmail = async () => {
   const services = await Service.findAll({ where: {
@@ -65,14 +65,14 @@ const sendEmail = async () => {
           html += '</ul>'
         }
       }
-      gmailSend({
+      const emailResult = await promisify(gmailSend({
         user: process.env.GMAIL_ADDRESS,
         pass: process.env.GMAIL_PASSWORD,
         to: emails,
         subject: 'ANNOUNCEMENT',
         html
-      })({}, (e, r) => console.log(e, r))
-      console.log(emails)
+      }))({})
+      console.log(emailResult)
       const r = await bot.rc.post('/restapi/v1.0/glip/groups', {
         type: 'PrivateChat',
         members: [bot.id, service.data.message.creatorId]
@@ -82,7 +82,6 @@ const sendEmail = async () => {
     } finally {
       await Service.destroy({ where: { id: service.id } })
     }
-    await delay(2000) // wait for email sending
   }
 }
 
