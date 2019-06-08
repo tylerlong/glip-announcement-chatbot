@@ -48,13 +48,23 @@ const sendEmail = async () => {
       const emails = persons
         .map(person => person.email)
         .filter(email => !email.endsWith('.bot.glip.net'))
+      let html = glipdown.Markdown(text.substring(13).trim()).replace(/\n/g, '\n<br/>')
+      if (post.attachments) {
+        const attachments = post.attachments.filter(a => a.name && a.contentUri)
+        if (attachments.length > 0) {
+          html += '<hr/><ul>'
+          for (const attachment of attachments) {
+            html += `<li><a target="_blank" href="${attachment.contentUri}">${attachment.name}</a></li>`
+          }
+          html += '</ul>'
+        }
+      }
       gmailSend({
         user: process.env.GMAIL_ADDRESS,
         pass: process.env.GMAIL_PASSWORD,
         to: emails,
         subject: 'ANNOUNCEMENT',
-        html: glipdown.Markdown(text.substring(13).trim()).replace(/\n/g, '\n<br/>')
-        // text: text.substring(13).trim()
+        html
       })({}, (e, r) => console.log(e, r))
       console.log(emails)
       const r = await bot.rc.post('/restapi/v1.0/glip/groups', {
