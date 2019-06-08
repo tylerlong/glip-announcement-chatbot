@@ -3,6 +3,7 @@ const gmailSend = require('gmail-send')
 const { Service, Bot } = require('ringcentral-chatbot/dist/models')
 const Sequelize = require('sequelize')
 const glipdown = require('glipdown')
+const R = require('ramda')
 
 const sendEmail = async () => {
   const services = await Service.findAll({ where: {
@@ -54,7 +55,12 @@ const sendEmail = async () => {
         if (attachments.length > 0) {
           html += '<hr/><ul>'
           for (const attachment of attachments) {
-            html += `<li><a target="_blank" href="${attachment.contentUri}">${attachment.name}</a></li>`
+            const suffix = R.last(attachment.name.split('.')).toLowerCase()
+            if (R.includes(suffix, ['png', 'jpg', 'jpeg', 'gif'])) {
+              html += `<li><img src="${attachment.contentUri}"/></li>`
+            } else {
+              html += `<li><a target="_blank" href="${attachment.contentUri}">${attachment.name}</a></li>`
+            }
           }
           html += '</ul>'
         }

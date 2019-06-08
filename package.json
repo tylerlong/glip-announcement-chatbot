@@ -9,6 +9,7 @@
     "glipdown": "^0.0.54",
     "gmail-send": "^1.2.14",
     "pg": "^7.11.0",
+    "ramda": "^0.26.1",
     "ringcentral-chatbot": "^1.0.1",
     "sequelize": "^5.8.7",
     "serverless-http": "^2.0.2",
