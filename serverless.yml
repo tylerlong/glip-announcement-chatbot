@@ -23,9 +23,6 @@ package:
 functions:
   app:
     handler: lambda.app
-    timeout: 300
-  proxy:
-    handler: lambda.proxy
     events:
       - http: 'ANY {proxy+}'
   maintain:
