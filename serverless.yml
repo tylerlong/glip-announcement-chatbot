@@ -23,6 +23,7 @@ package:
 functions:
   app:
     handler: lambda.app
+    timeout: 300
     events:
       - http: 'ANY {proxy+}'
     vpc:
@@ -30,6 +31,7 @@ functions:
         - Ref: LambdaSecurityGroup
   maintain:
     handler: lambda.maintain
+    timeout: 300
     events:
       - schedule: rate(1 day)
     vpc:
@@ -37,6 +39,7 @@ functions:
         - Ref: LambdaSecurityGroup
   sendEmail:
     handler: lambda.sendEmail
+    timeout: 300
     events:
       - schedule: rate(1 minute)
     vpc:
