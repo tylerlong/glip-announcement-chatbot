@@ -5,6 +5,7 @@ provider:
   runtime: nodejs10.x
   region: us-east-1
   memorySize: 256
+  timeout: 30
   environment: ${file(./.env.yml)}
   vpc:
     subnetIds:
@@ -21,17 +22,25 @@ package:
     - '!node_modules/**'
   excludeDevDependencies: true
 functions:
+  proxy:
+    handler: lambda.proxy
+    events:
+      - http: 'POST {proxy+}'
+      - http: 'PUT {proxy+}'
+      - http: 'DELETE {proxy+}'
+      - http: 'PATCH {proxy+}'
+    vpc:
+      securityGroupIds:
+        - Ref: LambdaSecurityGroup
   app:
     handler: lambda.app
-    timeout: 300
     events:
-      - http: 'ANY {proxy+}'
+      - http: 'GET {proxy+}'
     vpc:
       securityGroupIds:
         - Ref: LambdaSecurityGroup
   maintain:
     handler: lambda.maintain
-    timeout: 300
     events:
       - schedule: rate(1 day)
     vpc:
@@ -39,7 +48,6 @@ functions:
         - Ref: LambdaSecurityGroup
   sendEmail:
     handler: lambda.sendEmail
-    timeout: 300
     events:
       - schedule: rate(1 minute)
     vpc:
