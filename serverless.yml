@@ -27,20 +27,20 @@ package:
     - '!node_modules/**'
   excludeDevDependencies: true
 functions:
-  proxy:
-    handler: lambda.proxy
-    events:
-      - http: 'ANY bot/{proxy+}'
-    vpc:
-      securityGroupIds:
-        - Ref: LambdaSecurityGroup
   app:
     handler: lambda.app
     events:
-      - http: 'ANY admin/{proxy+}'
+      - http: 'ANY {proxy+}'
     vpc:
       securityGroupIds:
         - Ref: LambdaSecurityGroup
+  # proxy:
+  #   handler: lambda.proxy
+  #   events:
+  #     - http: 'ANY {proxy+}'
+  #   vpc:
+  #     securityGroupIds:
+  #       - Ref: LambdaSecurityGroup
   maintain:
     handler: lambda.maintain
     events:
