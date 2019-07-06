@@ -18,6 +18,8 @@ provider:
       - Ref: PrivateSubnet2
       - Ref: PrivateSubnet3
       - Ref: PrivateSubnet4
+    securityGroupIds:
+      - Ref: LambdaSecurityGroup
 package:
   exclude:
     - ./**
@@ -31,30 +33,18 @@ functions:
     handler: lambda.app
     events:
       - http: 'ANY {proxy+}'
-    vpc:
-      securityGroupIds:
-        - Ref: LambdaSecurityGroup
   # proxy:
   #   handler: lambda.proxy
   #   events:
   #     - http: 'ANY {proxy+}'
-  #   vpc:
-  #     securityGroupIds:
-  #       - Ref: LambdaSecurityGroup
   maintain:
     handler: lambda.maintain
     events:
       - schedule: rate(1 day)
-    vpc:
-      securityGroupIds:
-        - Ref: LambdaSecurityGroup
   sendEmail:
     handler: lambda.sendEmail
     events:
       - schedule: rate(1 minute)
-    vpc:
-      securityGroupIds:
-        - Ref: LambdaSecurityGroup
 
 resources:
   Resources:
