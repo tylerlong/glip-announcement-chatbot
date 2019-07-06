@@ -10,15 +10,15 @@
     "gmail-send": "^1.2.14",
     "pg": "^7.11.0",
     "ramda": "^0.26.1",
-    "ringcentral-chatbot": "^1.0.1",
-    "sequelize": "^5.8.7",
+    "ringcentral-chatbot": "^1.0.2",
+    "sequelize": "^5.9.3",
     "serverless-http": "^2.0.2"
   },
   "devDependencies": {
     "dotenv": "^8.0.0",
-    "ngrok": "^3.1.1",
-    "serverless": "^1.44.1",
-    "sqlite3": "^4.0.8",
+    "ngrok": "^3.2.1",
+    "serverless": "^1.46.1",
+    "sqlite3": "^4.0.9",
     "standard": "^12.0.1",
     "yarn-upgrade-all": "^0.5.0"
   }
