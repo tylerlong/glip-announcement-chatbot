@@ -10,8 +10,8 @@
     "gmail-send": "^1.2.14",
     "pg": "^7.11.0",
     "ramda": "^0.26.1",
-    "ringcentral-chatbot": "^1.1.0",
-    "sequelize": "^5.9.3",
+    "ringcentral-chatbot": "^1.1.1",
+    "sequelize": "^5.9.4",
     "serverless-http": "^2.0.2"
   },
   "devDependencies": {

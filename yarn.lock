@@ -104,11 +104,21 @@ agent-base@^4.3.0:
     es6-promisify "^5.0.0"
 
 ajv-keywords@^3.0.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.4.0.tgz#4b831e7b531415a7cc518cd404e73f6193c6349d"
-  integrity sha512-aUjdRFISbuFOl0EIZc+9e4FfZp0bDZgAdOOf30bJmw8VM9v84SHyVyxDfbWxpGYbdZD/9XoKxfHVNmxPkhwyGw==
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.4.1.tgz#ef916e271c64ac12171fd8384eaae6b2345854da"
+  integrity sha512-RO1ibKvd27e6FEShVFfPALuHI3WjSVNeK5FIsmme/LYRNxjKuNj+Dt7bucLa6NdSv3JcVTyMlm9kGR84z1XpaQ==
 
-ajv@^6.0.1, ajv@^6.5.0, ajv@^6.5.5:
+ajv@^6.0.1, ajv@^6.5.0:
+  version "6.10.1"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.10.1.tgz#ebf8d3af22552df9dd049bfbe50cc2390e823593"
+  integrity sha512-w1YQaVGNC6t2UCPjEawK/vo/dG8OOrVtUmhBT1uJJYxbl5kU2Tj3v6LGqBcsysN1yhuCStJCCA3GqdvKY8sqXQ==
+  dependencies:
+    fast-deep-equal "^2.0.1"
+    fast-json-stable-stringify "^2.0.0"
+    json-schema-traverse "^0.4.1"
+    uri-js "^4.2.2"
+
+ajv@^6.5.5:
   version "6.10.0"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.10.0.tgz#90d0d54439da587cd7e843bfb7045f50bd22bdf1"
   integrity sha512-nffhOpkymDECQyR0mnsUtoCE8RlX38G0rYP+wgLWFyZuUyuuojSSvi/+euOiQBIn63whYwYVIIH1TvE3tu4OEg==
@@ -3666,10 +3676,10 @@ rimraf@^2.2.8, rimraf@^2.6.1, rimraf@~2.6.2:
   dependencies:
     glob "^7.1.3"
 
-ringcentral-chatbot@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/ringcentral-chatbot/-/ringcentral-chatbot-1.1.0.tgz#7f7625135916b1fd37c7257cd0cc1bfe3882ba8e"
-  integrity sha512-yrfv/bcnSXZ/0iyPlA+l5EvO4mCjYAlWxmyYGTKWAq87T06Fk+PTvcT6DJ6JCKIqxKrTlkqCVxD6zQ3alxGubA==
+ringcentral-chatbot@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/ringcentral-chatbot/-/ringcentral-chatbot-1.1.1.tgz#3dc77404d7798410aef03efdd7b6bd377beb1f1a"
+  integrity sha512-1ld8gMOlMjpFPrNKN2wm7Zjtmkujbq58cFrvHnc91hVJCQlGZCIUdYpo/qmdFoENSYTVOYdQCK6tMXRargHwMA==
   dependencies:
     aws-sdk "^2.488.0"
     axios "^0.19.0"
@@ -3809,6 +3819,27 @@ sequelize@^5.9.3:
   version "5.9.3"
   resolved "https://registry.yarnpkg.com/sequelize/-/sequelize-5.9.3.tgz#679e4e8d9186f8f995ede3ad2905d38a9f97867d"
   integrity sha512-VQAQZVhRmUXJ96xuk0Kdjf6Ut6bHPUJXyRpe6eTtZhgK+dggKmO/HmJSHbcx+SMSqs66cHHqcrF0cf8Y/N4OVA==
+  dependencies:
+    bluebird "^3.5.0"
+    cls-bluebird "^2.1.0"
+    debug "^4.1.1"
+    dottie "^2.0.0"
+    inflection "1.12.0"
+    lodash "^4.17.11"
+    moment "^2.24.0"
+    moment-timezone "^0.5.21"
+    retry-as-promised "^3.1.0"
+    semver "^6.1.1"
+    sequelize-pool "^2.3.0"
+    toposort-class "^1.0.1"
+    uuid "^3.2.1"
+    validator "^10.11.0"
+    wkx "^0.4.6"
+
+sequelize@^5.9.4:
+  version "5.9.4"
+  resolved "https://registry.yarnpkg.com/sequelize/-/sequelize-5.9.4.tgz#70af68085dee0ff1da220a719be549bd3e892600"
+  integrity sha512-smkcfCYn9X6DA6iaXmZBYui8GqpHcYe/nKImSJ592RdHzpIajyhkSEXQLMtxrO0YiUKqHTTcK9Twp9uUBsj1Rg==
   dependencies:
     bluebird "^3.5.0"
     cls-bluebird "^2.1.0"
