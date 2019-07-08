@@ -34,8 +34,8 @@ functions:
   app:
     handler: lambda.app
     timeout: 300
-    # events:
-    #   - http: 'ANY {proxy+}'
+    events:
+      - http: 'GET /admin/diagnostic'
   proxy:
     handler: lambda.proxy
     events:
