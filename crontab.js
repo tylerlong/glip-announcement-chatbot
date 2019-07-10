@@ -23,11 +23,19 @@ const sendEmail = async () => {
         console.log('no bot')
         continue
       }
+
       const group = await bot.getGroup(service.groupId)
       if (!group) {
         console.log('no group')
         continue
       }
+
+      const user = await bot.getUser(service.data.message.creatorId)
+      if (!user) {
+        console.log('no user')
+        continue
+      }
+
       let post
       try {
         const r = await bot.rc.get(`/restapi/v1.0/glip/posts/${service.data.message.id}`)
@@ -69,7 +77,7 @@ const sendEmail = async () => {
         user: process.env.GMAIL_ADDRESS,
         pass: process.env.GMAIL_PASSWORD,
         to: emails,
-        subject: 'ANNOUNCEMENT',
+        subject: `${user.glip.firstName} ${user.glip.lastName} posted an announcement${group.name ? ` to ${group.name}` : ''}`,
         html
       }))({})
       console.log(emailResult)
