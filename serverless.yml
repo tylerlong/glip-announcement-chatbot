@@ -20,6 +20,12 @@ provider:
       - Ref: PrivateSubnet1
       - Ref: PrivateSubnet2
       - Ref: PrivateSubnet3
+  tags:
+    Department: dev
+    Team: dre
+    Owner: Tyler Liu
+    Environment: temp
+    Name: dre-glip-announcement-chatbot
 
 package:
   exclude:
