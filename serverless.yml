@@ -26,6 +26,7 @@ provider:
     Owner: Tyler Liu
     Environment: temp
     Name: dre-glip-announcement-chatbot
+  stackTags: ${self:provider.tags}
 
 package:
   exclude:
